@@ -52,4 +52,27 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     debugImplementation(libs.androidx.compose.ui.tooling)
+
+    // navigation
+    implementation("androidx.navigation:navigation-compose:2.10.2")
+
+    // kotlin seralization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.12.0")
+
+    //Media 3
+    implementation("androidx.media3:media3-exoplayer:1.11.1")
+    implementation("androidx.media3:media3-ui:1.11.1")
+    implementation("androidx.media3:media3-common:1.11.1")
+
+    // viewmodel-compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.11.0")
+
+    //coil
+    implementation("io.coil-kt:coil-compose:2.7.0")
+
+    // permission
+    implementation("com.google.accompanist:accompanist-permissions:0.37.3")
+
+    // Icon
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
 }
