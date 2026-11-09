@@ -74,15 +74,14 @@ class VideoRepository(private val context: Context) {
         return ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id)
     }
 
-    suspend fun deleteVideo(uri:Uri):Boolean = withContext(Dispatchers.IO){
+    suspend fun deleteVideo(uri: Uri): Boolean = withContext(Dispatchers.IO) {
         try {
-            val rowsDeleted = context.contentResolver.delete(uri,null,null)
+            val rowsDeleted = context.contentResolver.delete(uri, null, null)
             rowsDeleted > 0
-        }catch (e: CancellationException){
+        } catch (e: CancellationException) {
             throw e
-        }
-        catch (e: Exception){
-             false
+        } catch (e: Exception) {
+            false
         }
 
 
