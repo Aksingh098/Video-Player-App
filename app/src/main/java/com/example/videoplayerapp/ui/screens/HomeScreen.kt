@@ -89,7 +89,7 @@ fun HomeScreen(navController: NavHostController) {
                     .clickable(
                         onClick = {
                             if (permissionState.allPermissionsGranted) {
-                                navController.navigate()
+                                navController.navigate("localMedia")
                             } else {
                                 permissionState.launchMultiplePermissionRequest()
                             }

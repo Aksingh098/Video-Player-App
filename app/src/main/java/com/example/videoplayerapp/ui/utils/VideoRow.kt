@@ -87,7 +87,7 @@ fun VideoRow(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp)
+            .padding(8.dp)
             .clickable(
                 onClick = onClick
             ),

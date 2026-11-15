@@ -69,9 +69,9 @@ fun LocalMediaScreen(navController: NavHostController, viewModel: VideoPlayerVie
     ) { result ->
         pendingToDelete?.let { video ->
             if (result.resultCode == Activity.RESULT_OK) {
-                scope.launch {
+
                     viewModel.deleteVideoFromList(video)
-                }
+
                 Toast.makeText(context, "Video Deleted", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(context, "Delete cancelled", Toast.LENGTH_SHORT).show()
@@ -144,13 +144,13 @@ fun LocalMediaScreen(navController: NavHostController, viewModel: VideoPlayerVie
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(innerpadding),
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                    verticalArrangement = Arrangement.spacedBy(2.dp)
                 ) {
                     items(viewModel.videos) { video ->
                         VideoRow(
                             video = video,
                             onClick = {
-                                navController.navigate("player/$video.id")
+                                navController.navigate("player/${video.id}")
                             },
                             onDelete = { videoToDelete = video }
                         )
@@ -165,7 +165,7 @@ fun LocalMediaScreen(navController: NavHostController, viewModel: VideoPlayerVie
             AlertDialog(
                 onDismissRequest = { videoToDelete = null },
                 title = { Text("Delete Video") },
-                text = { Text("Do you want to delete \" ${video.id}\" \n This action can't be undone.") },
+                text = { Text("Do you want to delete \" ${video.title}\" \n This action can't be undone.") },
                 confirmButton = {
                     TextButton(
                         onClick = {
