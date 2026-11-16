@@ -44,6 +44,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.videoplayerapp.model.LocalVideo
+import com.example.videoplayerapp.ui.navigation.MyNavRoutes
 import com.example.videoplayerapp.ui.utils.VideoRow
 import com.example.videoplayerapp.ui.viewModel.VideoPlayerViewModel
 import kotlinx.coroutines.Dispatchers
@@ -150,7 +151,7 @@ fun LocalMediaScreen(navController: NavHostController, viewModel: VideoPlayerVie
                         VideoRow(
                             video = video,
                             onClick = {
-                                navController.navigate("player/${video.id}")
+                                navController.navigate(MyNavRoutes.PlayerScreen(videoId = video.id))
                             },
                             onDelete = { videoToDelete = video }
                         )

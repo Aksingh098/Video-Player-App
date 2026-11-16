@@ -16,43 +16,22 @@ import com.example.videoplayerapp.ui.screens.LocalMediaScreen
 import com.example.videoplayerapp.ui.screens.PlayerScreen
 import com.example.videoplayerapp.ui.theme.VideoPlayerAppTheme
 import com.example.videoplayerapp.ui.viewModel.VideoPlayerViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.videoplayerapp.ui.navigation.NavGraph
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val repo = VideoRepository(applicationContext)
+
         setContent {
             VideoPlayerAppTheme {
                 val navController = rememberNavController()
-                val viewModel: VideoPlayerViewModel = viewModel {
-
-                    VideoPlayerViewModel(repo)
-                }
-
-                NavHost(
-                    navController = navController,
-                    startDestination = "home"
-                ) {
-                    composable("home") {
-                        HomeScreen((navController))
-                    }
-
-                    composable("localMedia") {
-                        LocalMediaScreen(navController, viewModel)
-                    }
-                    composable("player/{videoId}", listOf(navArgument("videoId") {
-                        type = NavType.LongType
-                    })) { backStackEntry ->
-                        val videoId = backStackEntry.arguments?.getLong("videoId") ?: 0L
-                        PlayerScreen(
-                            videoId = videoId,
-                            viewModel = viewModel,
-                            navController = navController
-                        )
-                    }
-
-                }
+                NavGraph(
+                    navController = navController
+                )
 
             }
         }

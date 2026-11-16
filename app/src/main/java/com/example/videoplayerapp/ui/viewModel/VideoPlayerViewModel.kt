@@ -7,9 +7,14 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.example.videoplayerapp.model.LocalVideo
 import com.example.videoplayerapp.repository.VideoRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 
-class VideoPlayerViewModel(private val repo: VideoRepository) : ViewModel() {
+@HiltViewModel
+class VideoPlayerViewModel @Inject constructor(
+    private val repo: VideoRepository
+) : ViewModel() {
 
     var videos by mutableStateOf<List<LocalVideo>>(emptyList())
     var isLoading by mutableStateOf(false)

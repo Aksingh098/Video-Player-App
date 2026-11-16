@@ -8,8 +8,12 @@ import com.example.videoplayerapp.model.LocalVideo
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-class VideoRepository(private val context: Context) {
+class VideoRepository @Inject constructor(
+    @ApplicationContext private val context: Context
+) {
     suspend fun getLocalVideos(): List<LocalVideo> = withContext(Dispatchers.IO) {
         val videos = mutableListOf<LocalVideo>()
 

@@ -31,6 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.videoplayerapp.R
+import com.example.videoplayerapp.ui.navigation.MyNavRoutes
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 
@@ -89,7 +90,7 @@ fun HomeScreen(navController: NavHostController) {
                     .clickable(
                         onClick = {
                             if (permissionState.allPermissionsGranted) {
-                                navController.navigate("localMedia")
+                                navController.navigate(MyNavRoutes.LocalMedia)
                             } else {
                                 permissionState.launchMultiplePermissionRequest()
                             }
